@@ -39,4 +39,3 @@ resource "aws_iam_role" "operator" {
   name               = "AspectWorkflowsOperator"
   assume_role_policy = data.aws_iam_policy_document.operator.json
 }
-

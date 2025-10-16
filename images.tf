@@ -10,6 +10,6 @@ data "aws_ami" "runner_image" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["aspect-workflows-debian-12-kitchen-sink-amd64-20250613-0"]
+    values = ["aspect-workflows-debian-12-kitchen-sink-amd64-20251013-0"]
   }
 }
