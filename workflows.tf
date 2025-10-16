@@ -1,5 +1,5 @@
 locals {
-  customer_id = "aspect-test"
+  customer_id = "writechoice"
 }
 
 module "aspect_workflows" {
@@ -9,7 +9,7 @@ module "aspect_workflows" {
     aws = aws.workflows
   }
 
-  source = "https://static.aspect.build/aspect/5.15.10/terraform-aws-aspect-workflows.zip"
+  source = "https://static.aspect.build/aspect/5.15.11/terraform-aws-aspect-workflows.zip"
 
   aspect_artifacts_bucket = "aw-artifacts-${local.region}"
 
@@ -111,10 +111,8 @@ module "aspect_workflows" {
     }
   }
 
-
   # WORKFLOWS_TEMPLATE:
-  hosts = ["gl"]
-
+  hosts = ["gl",]
   # GitLab runner groups
   gl_runner_groups = {
     # The `default` runner group is used for general bazel tasks such as build & test.
@@ -149,6 +147,7 @@ module "aspect_workflows" {
       max_runners            = 1
       min_runners            = 0
       project_id             = "75349277" # Project ID of the GitLab repository under test
+      policies               = { warming_manage : module.aspect_workflows.warming_management_policies["default"].arn }
       queue                  = "aspect-warming"
       resource_type          = "default"
       warming                = false # do not warm runners used to generate warming archives
