@@ -1,6 +1,6 @@
 locals {
   cidr   = "10.0.0.0/16"
-  region = "us-east-2"
+  region = "us-west-2"
   azs = [
     "${local.region}a",
     "${local.region}b",
@@ -23,7 +23,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "4.0.2"
+  version = "5.21.0"
 
   name = "aw_dev_vpc"
   cidr = local.cidr
@@ -40,7 +40,7 @@ module "vpc" {
 
 module "vpc_endpoints" {
   source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
-  version = "4.0.2"
+  version = "5.21.0"
 
   vpc_id = module.vpc.vpc_id
   endpoints = {
