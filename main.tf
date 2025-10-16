@@ -2,9 +2,9 @@ terraform {
   required_version = ">= 1.12.0"
 
   backend "s3" {
-    bucket = "TERRAFORM_STATE_BUCKET"
+    bucket = "aspect-bucket-us-east-2"
     key    = "global/s3/terraform.tfstate"
-    region = "us-west-2"
+    region = "us-east-2"
   }
 
   required_providers {
