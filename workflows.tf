@@ -6,7 +6,7 @@ locals {
 module "aspect_workflows" {
   customer_id = local.customer_id
 
-  source = "https://static.aspect.build/aspect/5.14.20/terraform-gcp-aspect-workflows.zip"
+  source = "https://static.aspect.build/aspect/5.15.10/terraform-gcp-aspect-workflows.zip"
 
   network    = google_compute_network.workflows_network.id
   subnetwork = google_compute_subnetwork.workflows_subnet.id
